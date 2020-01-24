@@ -1,0 +1,29 @@
+$primary-color: #1890ff;
+$text-color: rgba(0, 0, 0, 0.65);
+$border-gray: #ebedf0;
+$background-blue: #e6f7ff;
+
+.article {
+  &__list {
+    padding: 0 20px;
+    min-height: 300px;
+  }
+  &__item {
+    padding: 20px 0;
+    color: $text-color;
+    border-bottom: 1px solid $border-gray;
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__author,
+    &__timestamp {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    &__author {
+      margin-right: 10px;
+    }
+  }
+}
+
+
