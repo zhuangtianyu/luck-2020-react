@@ -2,7 +2,9 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import routes from './routes'
-import './styles/reset.scss'
+// import './styles/reset.scss'
+import './styles/index.scss'
+import 'antd/dist/antd.css'
 
 function App () {
   return (
@@ -13,3 +15,5 @@ function App () {
 }
 
 export default App
+
+

@@ -1,0 +1,29 @@
+$primary-color: #1890ff;
+$text-color: rgba(0, 0, 0, 0.65);
+$border-gray: #ebedf0;
+$background-blue: #e6f7ff;
+
+.home__nav {
+  border-bottom: 1px solid $border-gray;
+  margin-bottom: 10px;
+  &__item {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    color: $text-color;
+    &.active {
+      color: $primary-color;
+      background-color: $background-blue;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 3px;
+        background-color: $primary-color;
+      }
+    }
+  }
+}

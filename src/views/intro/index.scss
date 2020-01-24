@@ -1,0 +1,25 @@
+.intro__view {
+  height: 100%;
+  text-align: center;
+  // background: url('../../assets/light-house.png') no-repeat center;
+  // background-size: cover;
+  &::after {
+    content: '';
+    height: 100%;
+  }
+  &::after,
+  .home__link {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .home__link {
+    color: #ff6a6a;
+    font-size: 16px;
+    margin-top: -200px;
+  }
+}
+
+
+
+
+

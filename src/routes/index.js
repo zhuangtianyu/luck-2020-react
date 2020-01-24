@@ -14,6 +14,7 @@ const SuspenseComponent = Component => props => {
 
 const ArticleListView = lazy(() => import('../views/article-list'))
 const ArticleDetailView = lazy(() => import('../views/article-detail'))
+const ResumeView = lazy(() => import('../views/resume'))
 
 export default [
   {
@@ -52,8 +53,13 @@ export default [
             component: SuspenseComponent(ArticleDetailView)
           }
         ]
+      },
+      {
+        path: '/home/resume',
+        component: SuspenseComponent(ResumeView)
       }
     ]
   }
 ]
+
 

@@ -1,12 +1,15 @@
 import React from 'react'
 import { renderRoutes } from 'react-router-config'
+import HomeNav from '../../components/home-nav'
 
 function HomeView (props) {
   const { route } = props
   return (
     <>
-      <div className="home__nav">home-nav</div>
-      { renderRoutes(route.routes) }
+      <HomeNav />
+      <div className="container">
+        { renderRoutes(route.routes) }
+      </div>
     </>
   )
 }
