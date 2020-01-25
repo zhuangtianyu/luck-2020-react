@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { fetchArticleDetail } from '../../service'
-import { Spin, message } from 'antd'
+import { message } from 'antd'
+import LuckLoading from '../../components/luck-loading'
+import MarkdownPreview from '../../components/markdown-preview'
 import './index.scss'
 
 message.config({ top: 200 })
@@ -28,15 +30,17 @@ function ArticleDetailView (props) {
   }, [id])
 
   return (
-    <Spin spinning={ fetching }>
+    <>
+      <LuckLoading loading={ fetching } />
       <div className="article__detail">
-        { articleDetail.markdownString }
+        <MarkdownPreview markdownString={ articleDetail.markdownString } />
       </div>
-    </Spin>
+    </>
   )
 }
 
 export default ArticleDetailView
+
 
 
 

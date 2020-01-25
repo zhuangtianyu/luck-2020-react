@@ -1,0 +1,25 @@
+.article__edit {
+  &__textarea {
+    textarea.ant-input {
+      margin-bottom: 20px;
+    }
+    &__submit {
+      .ant-btn,
+      .ant-input {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .ant-input {
+        width: 30%;
+      }
+    }
+  }
+}
+
+
+
+

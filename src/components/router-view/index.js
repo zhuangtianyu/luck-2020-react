@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 
 const RouterView = (props) => {
@@ -11,7 +12,8 @@ const RouterView = (props) => {
   )
 }
 
-export default RouterView
+export default withRouter(RouterView)
+
 
 
 

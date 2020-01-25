@@ -1,0 +1,29 @@
+$white: #fff;
+
+.luck__loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba($color: $white, $alpha: 0.6);
+  text-align: center;
+  &::after,
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &__icon {
+    font-size: 30px;
+    // margin-top: -200px;
+  }
+  &::after {
+    content: '';
+    height: 100%;
+  }
+}
+
+
+
+

@@ -1,0 +1,25 @@
+.home__nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.home__content {
+  padding-top: 50px;
+  height: 100%;
+  .container {
+    height: 100%;
+    > div {
+      height: 100%;
+    }
+  }
+}
+
+
+
+
+
+
+

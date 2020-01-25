@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { timestampToString } from '../../utils'
 import { fetchArticleList } from '../../service'
-import { Spin, message } from 'antd'
+import { message } from 'antd'
+import LuckLoading from '../../components/luck-loading'
 import './index.scss'
 
 message.config({ top: 200 })
@@ -28,7 +29,8 @@ function ArticleListView () {
   }, [])
 
   return (
-    <Spin spinning={ fetching }>
+    <>
+      <LuckLoading loading={ fetching } />
       <div className="article__list">
         {
           articleList.map(item => (
@@ -49,7 +51,7 @@ function ArticleListView () {
           ))
         }
       </div>
-    </Spin>
+    </>
   )
 }
 

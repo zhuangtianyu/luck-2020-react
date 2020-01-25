@@ -2,10 +2,11 @@ $primary-color: #1890ff;
 $text-color: rgba(0, 0, 0, 0.65);
 $border-gray: #ebedf0;
 $background-blue: #e6f7ff;
+$white: #fff;
 
 .home__nav {
   border-bottom: 1px solid $border-gray;
-  margin-bottom: 10px;
+  background-color: $white;
   &__item {
     position: relative;
     display: inline-block;
@@ -27,3 +28,4 @@ $background-blue: #e6f7ff;
     }
   }
 }
+

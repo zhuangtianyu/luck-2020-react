@@ -1,0 +1,29 @@
+$primary-color: #1890ff;
+$text-color: rgba(0, 0, 0, 0.65);
+$border-gray: #ebedf0;
+$background-blue: #e6f7ff;
+
+.article__edit {
+  padding: 20px;
+  font-size: 0;
+  height: 100%;
+
+  &__textarea,
+  &__preview  {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    width: 49%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+  &__textarea {
+    margin-right: 2%;
+    textarea.ant-input {
+      height: calc(100% - 52px);
+    }
+  }
+}
+
+
+

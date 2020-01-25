@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.scss'
 
 function Resume () {
   return (
@@ -9,7 +10,6 @@ function Resume () {
 }
 
 export default Resume
-
 
 
 
