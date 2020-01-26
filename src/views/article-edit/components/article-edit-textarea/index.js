@@ -7,7 +7,7 @@ const { TextArea } = Input
 message.config({ top: 200 })
 
 function ArticleEditTextarea (props) {
-  const { onChange, onSubmit } = props
+  const { articleDetail, onChange, onSubmit } = props
 
   const [markdownString, setMarkdownString] = useState('')
   const [title, setTitle] = useState('')
@@ -26,16 +26,41 @@ function ArticleEditTextarea (props) {
   }
 
   useEffect(() => {
+    if (Object.keys(articleDetail).length !== 0) {
+      const { title, author, markdownString } = articleDetail
+      setTitle(title)
+      setAuthor(author)
+      setMarkdownString(markdownString)
+    }
+  }, [articleDetail])
+
+  useEffect(() => {
     onChange(markdownString)
   }, [markdownString, onChange])
 
   return (
     <div className="article__edit__textarea">
-      <TextArea onChange={ handleChange } />
+      <TextArea
+        value={ markdownString }
+        onChange={ handleChange }
+      />
       <div className="article__edit__textarea__submit">
-        <Button type="primary" onClick={ handleSubmit }>发布</Button>
-        <Input placeholder="请输入标题" onChange={ e => setTitle(e.target.value) } />
-        <Input placeholder="请输入作者" onChange={ e => setAuthor(e.target.value) }/>
+        <Button
+          type="primary"
+          onClick={ handleSubmit }
+        >
+          发布
+        </Button>
+        <Input
+          placeholder="请输入标题"
+          value={ title }
+          onChange={ e => setTitle(e.target.value) }
+        />
+        <Input
+          placeholder="请输入作者"
+          value={ author }
+          onChange={ e => setAuthor(e.target.value) }
+        />
       </div>
     </div>
   )

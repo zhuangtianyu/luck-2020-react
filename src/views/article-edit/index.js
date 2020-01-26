@@ -5,6 +5,7 @@ import ArticleEditTextarea from './components/article-edit-textarea'
 import MarkdownPreview from '../../components/markdown-preview'
 import LuckLoading from '../../components/luck-loading'
 import { submitArticle } from '../../service'
+import { fetchArticleDetail } from '../../service'
 import './index.scss'
 
 message.config({ top: 200 })
@@ -13,6 +14,8 @@ function ArticleEditView (props) {
   const [fetching, setFetching] = useState(false)
   const [password, setPassword] = useState(undefined)
   const [markdownString, setMarkdownString] = useState('')
+  const [id, setId] = useState(undefined)
+  const [articleDetail, setArticleDetail] = useState({})
 
   const permissionCancel = () => {
     props.history.push('/home/article/list')
@@ -25,7 +28,7 @@ function ArticleEditView (props) {
   const textareaSubmit = ({ markdownString, title, author }) => {
     password === undefined
       ? message.error('编辑权限校验--不通过')
-      : submit({ markdownString, title, author, password })
+      : submit({ markdownString, title, author, password, id })
   }
 
   const submit = async (params) => {
@@ -56,6 +59,27 @@ function ArticleEditView (props) {
     }
   }, [])
 
+  useEffect(() => {
+    const { id } = props.match.params
+    id !== undefined && setId(id)
+  }, [props])
+
+  useEffect(() => {
+    const fetch = async () => {
+      setFetching(true)
+      try {
+        const data = await fetchArticleDetail(id)
+        setArticleDetail(data)
+        setFetching(false)
+      } catch (errorMessage) {
+        message.error(errorMessage)
+        setFetching(false)
+        props.history.push('/home/article/list')
+      }
+    }
+    id !== undefined && fetch(id)
+  }, [id, props.history])
+
   return (
     <>
       <LuckLoading loading={ fetching } />
@@ -65,6 +89,7 @@ function ArticleEditView (props) {
       />
       <div className="article__edit">
         <ArticleEditTextarea
+          articleDetail={ articleDetail }
           onChange={ textareaChange }
           onSubmit={ textareaSubmit }
         />
@@ -78,7 +103,6 @@ function ArticleEditView (props) {
 }
 
 export default ArticleEditView
-
 
 
 

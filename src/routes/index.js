@@ -56,6 +56,11 @@ export default [
           },
           {
             path: '/home/article/edit',
+            exact: true,
+            component: SuspenseComponent(ArticleEditView)
+          },
+          {
+            path: '/home/article/edit/:id',
             component: SuspenseComponent(ArticleEditView)
           }
         ]
@@ -76,4 +81,5 @@ export default [
     render: () => <Redirect to={ '/home/article/detail/1000' } />
   }
 ]
+
 
