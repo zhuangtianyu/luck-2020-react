@@ -7,9 +7,19 @@ function MarkdownPreview (props) {
 
   const previewRef = useRef()
 
+  const bindImgEvent = () => {
+    const imgList = Array.from(previewRef.current.querySelectorAll('img'))
+    imgList.forEach(img => {
+      img.addEventListener('click', () => {
+        window.open(img.src)
+      })
+    })
+  }
+
   useEffect(() => {
     const html = markdownToHtml(markdownString)
     previewRef.current.innerHTML = html
+    bindImgEvent()
   }, [markdownString])
 
   return (
@@ -26,6 +36,8 @@ function MarkdownPreview (props) {
 }
 
 export default MarkdownPreview
+
+
 
 
 

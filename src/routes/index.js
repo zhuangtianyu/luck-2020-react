@@ -73,7 +73,7 @@ export default [
   // 兼容 web2019 分享到朋友圈后的地址 (无法修改), 进行重定向
   {
     path: '/article/38',
-    render: () => <Redirect to={ '/home/article/detail/38' } />
+    render: () => <Redirect to={ '/home/article/detail/1000' } />
   }
 ]
 
