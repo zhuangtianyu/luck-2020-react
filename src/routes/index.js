@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import RouterView from '../components/router-view'
 import IntroView from "../views/intro"
 import HomeView from '../views/home'
+import UploadView from '../views/upload'
 
 const SuspenseComponent = Component => props => {
   return (
@@ -65,12 +66,14 @@ export default [
       }
     ]
   },
+  {
+    path: '/upload',
+    component: UploadView,
+  },
   // 兼容 web2019 分享到朋友圈后的地址 (无法修改), 进行重定向
   {
     path: '/article/38',
     render: () => <Redirect to={ '/home/article/detail/38' } />
   }
 ]
-
-
 

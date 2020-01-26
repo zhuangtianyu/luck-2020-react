@@ -1,0 +1,25 @@
+.upload__view {
+  height: 100%;
+  text-align: center;
+}
+
+.upload__view::after,
+.upload__dragger {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.upload__view::after {
+  content: '';
+  height: 100%;
+}
+
+.upload__dragger {
+  width: 300px;
+  height: 160px;
+  margin-top: -200px;
+}
+
+
+
+
