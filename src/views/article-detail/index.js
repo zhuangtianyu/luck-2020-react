@@ -33,7 +33,7 @@ function ArticleDetailView (props) {
     <>
       <LuckLoading loading={ fetching } />
       <div className="article__detail">
-        <MarkdownPreview markdownString={ articleDetail.markdownString } />
+        <MarkdownPreview markdownString={ articleDetail.markdownString || '' } />
       </div>
     </>
   )
