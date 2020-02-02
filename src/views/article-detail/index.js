@@ -29,6 +29,16 @@ function ArticleDetailView (props) {
     fetch()
   }, [id])
 
+  useEffect(() => {
+    const documentTitle = document.title
+    if (articleDetail.title !== undefined) {
+      document.title = articleDetail.title
+    }
+    return () => {
+      document.title = documentTitle
+    }
+  }, [articleDetail])
+
   return (
     <>
       <LuckLoading loading={ fetching } />
