@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Input, Button, message } from 'antd'
+import Textarea from '../../../../components/textarea'
+import Input from '../../../../components/input'
+import Button from '../../../../components/button'
 import './index.scss'
-
-const { TextArea } = Input
-
-message.config({ top: 200 })
 
 function ArticleEditTextarea (props) {
   const { articleDetail, onChange, onSubmit } = props
@@ -18,9 +16,9 @@ function ArticleEditTextarea (props) {
   }
 
   const handleSubmit = () => {
-    if (markdownString === '') return message.error('内容不能为空')
-    if (title === '') return message.error('标题不能为空')
-    if (author === '') return message.error('作者不能为空')
+    if (markdownString === '') return alert('内容不能为空')
+    if (title === '') return alert('标题不能为空')
+    if (author === '') return alert('作者不能为空')
 
     onSubmit({ markdownString, title, author })
   }
@@ -40,7 +38,7 @@ function ArticleEditTextarea (props) {
 
   return (
     <div className="article__edit__textarea">
-      <TextArea
+      <Textarea
         value={ markdownString }
         onChange={ handleChange }
       />

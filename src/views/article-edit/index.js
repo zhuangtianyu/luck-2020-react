@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { message } from 'antd'
-import PermissionModal from './components/permission-modal'
 import ArticleEditTextarea from './components/article-edit-textarea'
 import MarkdownPreview from '../../components/markdown-preview'
 import LuckLoading from '../../components/luck-loading'
-import { submitArticle } from '../../service'
-import { fetchArticleDetail } from '../../service'
+import Modal from '../../components/modal'
+import Input from '../../components/input'
+import { checkEditPermission, submitArticle, fetchArticleDetail } from '../../service'
 import './index.scss'
 
 message.config({ top: 200 })
@@ -13,6 +13,7 @@ message.config({ top: 200 })
 function ArticleEditView (props) {
   const [fetching, setFetching] = useState(false)
   const [password, setPassword] = useState(undefined)
+  const [uncertainPassword, setUncertainPassword] = useState(undefined)
   const [markdownString, setMarkdownString] = useState('')
   const [id, setId] = useState(undefined)
   const [articleDetail, setArticleDetail] = useState({})
@@ -65,6 +66,19 @@ function ArticleEditView (props) {
   }, [props])
 
   useEffect(() => {
+    const checkPassword = async () => {
+      try {
+        await checkEditPermission({ password })
+      }
+      catch (errorMessage) {
+        alert(errorMessage)
+        permissionCancel()
+      }
+    }
+    password && checkPassword()
+  }, [password])
+
+  useEffect(() => {
     const fetch = async () => {
       setFetching(true)
       try {
@@ -80,13 +94,29 @@ function ArticleEditView (props) {
     id !== undefined && fetch(id)
   }, [id, props.history])
 
+  useEffect(() => {
+    if (password !== undefined) return
+
+    Modal.render({
+      title: '编辑权限校验',
+      content: (
+        <>
+          <div className="permission__modal__guide">请输入密码:</div>
+          <Input
+            type="password"
+            onChange={ e => setUncertainPassword(e.target.value) }
+          />
+        </>
+      ),
+      onConfirm: () => setPassword(uncertainPassword),
+      onCancel: () => permissionCancel(),
+      onClose: () => permissionCancel(),
+    })
+  })
+
   return (
     <>
       <LuckLoading loading={ fetching } />
-      <PermissionModal
-        permissionCancel={ permissionCancel }
-        permissionPassed={ permissionPassed }
-      />
       <div className="article__edit">
         <ArticleEditTextarea
           articleDetail={ articleDetail }

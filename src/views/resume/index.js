@@ -8,6 +8,7 @@ function Resume () {
         <img
           className="resume__view__base-info__avatar"
           src="http://zhuangtianyu.com/image/1580058226968.jpeg"
+          alt="avatar-cola"
         />
         <div className="resume__view__base-info__content">
           <h3 className="resume__view__base-info__name">庄天宇</h3>
