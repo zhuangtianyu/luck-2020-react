@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import ArticleEditTextarea from './components/article-edit-textarea'
 import MarkdownPreview from '../../components/markdown-preview'
 import Modal from '../../components/modal'
@@ -12,12 +12,6 @@ function ArticleEditView (props) {
   const [markdownString, setMarkdownString] = useState('')
   const [id, setId] = useState(undefined)
   const [articleDetail, setArticleDetail] = useState({})
-
-  const permissionCancel = () => {
-    props.history.push('/home/article/list')
-  }
-
-  const permissionPassed = password => setPassword(password)
 
   const textareaChange = markdownString => setMarkdownString(markdownString)
 
@@ -36,6 +30,10 @@ function ArticleEditView (props) {
       alert(errorMessage)
     }
   }
+
+  const permissionCancel = useCallback(() => {
+    props.history.push('/home/article/list')
+  }, [props.history])
 
   useEffect(() => {
     const nodeList = Array.from(document.querySelectorAll('.container'))
@@ -68,7 +66,7 @@ function ArticleEditView (props) {
       }
     }
     password && checkPassword()
-  }, [password])
+  }, [password, permissionCancel])
 
   useEffect(() => {
     const fetch = async () => {
@@ -77,11 +75,11 @@ function ArticleEditView (props) {
         setArticleDetail(data)
       } catch (errorMessage) {
         alert(errorMessage)
-        props.history.push('/home/article/list')
+        permissionCancel()
       }
     }
     id !== undefined && fetch(id)
-  }, [id, props.history])
+  }, [id, props.history, permissionCancel])
 
   useEffect(() => {
     if (password !== undefined) return
