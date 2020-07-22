@@ -1,0 +1,43 @@
+.loading {
+
+  &-shadow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.6);
+    text-align: center;
+  }
+
+  &-icon,
+  &-shadow::after {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &-shadow::after {
+    content: '';
+    height: 100%;
+  }
+
+  &-icon {
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear 0s infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+  
+    50% {
+      transform: rotate(180deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

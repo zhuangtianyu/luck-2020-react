@@ -4,6 +4,7 @@ import RouterView from '../components/router-view'
 import IntroView from "../views/intro"
 import HomeView from '../views/home'
 import UploadView from '../views/upload'
+import ComponentsView from '../views/components'
 
 const SuspenseComponent = Component => props => {
   return (
@@ -79,6 +80,10 @@ export default [
   {
     path: '/article/38',
     render: () => <Redirect to={ '/home/article/detail/1000' } />
+  },
+  {
+    path: '/components',
+    component: ComponentsView,
   }
 ]
 
