@@ -3,13 +3,15 @@ import Button from '../../components/button'
 import Input from '../../components/input'
 import Loading from '../../components/loading'
 import Modal from '../../components/modal'
+import Textarea from '../../components/textarea'
 import './index.scss'
 
 class ComponentsView extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      inputValue: 'im a input.'
+      inputValue: 'im a input.',
+      textareaValue: 'im a textarea.'
     }
   }
 
@@ -84,8 +86,23 @@ class ComponentsView extends React.Component {
       <Button
         onClick={() => this.renderModal()}
       >
-        open modal.
+        open modal
       </Button>
+    )
+  }
+
+  renderTextareaEg() {
+    const { textareaValue } = this.state
+
+    return (
+      <Textarea
+        value={textareaValue}
+        onChange={event => {
+          this.setState({
+            textareaValue: event.target.textareaValue
+          })
+        }}
+      />
     )
   }
 
@@ -109,6 +126,10 @@ class ComponentsView extends React.Component {
         <div className="components-title">modal</div>
 
         {this.renderModalEg()}
+
+        <div className="components-title">textarea</div>
+
+        {this.renderTextareaEg()}
 
         </div>
       </div>
