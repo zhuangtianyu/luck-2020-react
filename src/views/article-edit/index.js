@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { message } from 'antd'
 import ArticleEditTextarea from './components/article-edit-textarea'
 import MarkdownPreview from '../../components/markdown-preview'
-import LuckLoading from '../../components/luck-loading'
 import Modal from '../../components/modal'
 import Input from '../../components/input'
 import { checkEditPermission, submitArticle, fetchArticleDetail } from '../../service'
 import './index.scss'
 
-message.config({ top: 200 })
-
 function ArticleEditView (props) {
-  const [fetching, setFetching] = useState(false)
   const [password, setPassword] = useState(undefined)
   const [uncertainPassword, setUncertainPassword] = useState(undefined)
   const [markdownString, setMarkdownString] = useState('')
@@ -28,20 +23,17 @@ function ArticleEditView (props) {
 
   const textareaSubmit = ({ markdownString, title, author }) => {
     password === undefined
-      ? message.error('编辑权限校验--不通过')
+      ? alert('编辑权限校验--不通过')
       : submit({ markdownString, title, author, password, id })
   }
 
   const submit = async (params) => {
-    setFetching(true)
     try {
       const { id } = await submitArticle(params)
-      setFetching(false)
       props.history.push(`/home/article/detail/${id}`)
     }
     catch (errorMessage) {
-      message.error(errorMessage)
-      setFetching(false)
+      alert(errorMessage)
     }
   }
 
@@ -80,14 +72,11 @@ function ArticleEditView (props) {
 
   useEffect(() => {
     const fetch = async () => {
-      setFetching(true)
       try {
         const data = await fetchArticleDetail(id)
         setArticleDetail(data)
-        setFetching(false)
       } catch (errorMessage) {
-        message.error(errorMessage)
-        setFetching(false)
+        alert(errorMessage)
         props.history.push('/home/article/list')
       }
     }
@@ -116,7 +105,6 @@ function ArticleEditView (props) {
 
   return (
     <>
-      <LuckLoading loading={ fetching } />
       <div className="article__edit">
         <ArticleEditTextarea
           articleDetail={ articleDetail }

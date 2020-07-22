@@ -1,6 +1,10 @@
 .resume__view {
   padding: 20px;
 
+  p {
+    margin-bottom: 1em;
+  }
+
   &__base-info {
     margin-bottom: 30px;
     &__avatar {
@@ -21,13 +25,11 @@
 
   &__skill {
     margin-bottom: 30px;
-    &__tags {
-      .ant-tag {
-        margin-bottom: 6px;
-      }
-    }
   }
-  
+
+  &__contact a {
+    color: #1890ff;
+  }
 }
 
 
