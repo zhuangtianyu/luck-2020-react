@@ -1,22 +1,14 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 import RouterView from '../components/router-view'
 import IntroView from "../views/intro"
 import HomeView from '../views/home'
+import ArticleListView from '../views/article-list'
+import ArticleDetailView from '../views/article-detail'
+import ArticleEditView from '../views/article-edit'
+import ResumeView from '../views/resume'
 import UploadView from '../views/upload'
-
-const SuspenseComponent = Component => props => {
-  return (
-    <Suspense fallback={ null }>
-      <Component { ...props } />
-    </Suspense>
-  )
-}
-
-const ArticleListView = lazy(() => import('../views/article-list'))
-const ArticleDetailView = lazy(() => import('../views/article-detail'))
-const ArticleEditView = lazy(() => import('../views/article-edit'))
-const ResumeView = lazy(() => import('../views/resume'))
+import ComponentsView from '../views/components'
 
 export default [
   {
@@ -48,26 +40,26 @@ export default [
           },
           {
             path: '/home/article/list',
-            component: SuspenseComponent(ArticleListView)
+            component: ArticleListView
           },
           {
             path: '/home/article/detail/:id',
-            component: SuspenseComponent(ArticleDetailView)
+            component: ArticleDetailView
           },
           {
             path: '/home/article/edit',
             exact: true,
-            component: SuspenseComponent(ArticleEditView)
+            component: ArticleEditView
           },
           {
             path: '/home/article/edit/:id',
-            component: SuspenseComponent(ArticleEditView)
+            component: ArticleEditView
           }
         ]
       },
       {
         path: '/home/resume',
-        component: SuspenseComponent(ResumeView)
+        component: ResumeView
       }
     ]
   },
@@ -79,6 +71,10 @@ export default [
   {
     path: '/article/38',
     render: () => <Redirect to={ '/home/article/detail/1000' } />
+  },
+  {
+    path: '/components',
+    component: ComponentsView,
   }
 ]
 

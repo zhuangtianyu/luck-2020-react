@@ -2,27 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { timestampToString } from '../../utils'
 import { fetchArticleList } from '../../service'
-import { message } from 'antd'
-import LuckLoading from '../../components/luck-loading'
 import './index.scss'
-
-message.config({ top: 200 })
 
 function ArticleListView () {
   const [articleList, setArticleList] = useState([])
 
-  const [fetching, setFetching] = useState(false)
-
   useEffect(() => {
-    setFetching(true)
     const fetch = async () => {
       try {
         const data = await fetchArticleList()
         setArticleList(data)
-        setFetching(false)
       } catch (errorMessage) {
-        message.error(errorMessage)
-        setFetching(false)
+        alert(errorMessage)
       }
     }
     fetch()
@@ -30,7 +21,6 @@ function ArticleListView () {
 
   return (
     <>
-      <LuckLoading loading={ fetching } />
       <div className="article__list">
         {
           articleList.map(item => (
