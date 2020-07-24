@@ -6,6 +6,14 @@ const loadingRoot = document.createElement('div')
 loadingRoot.className = 'loading-root'
 document.querySelector('body').appendChild(loadingRoot)
 
+export const LoadingIcon = () => (
+  <img
+    className="loading-icon"
+    src="http://zhuangtianyu.com/image/1595397636000.png"
+    alt="loading-icon"
+  />
+)
+
 class Loading extends React.Component {
   static show () {
     ReactDOM.render(<Loading />, loadingRoot)
@@ -19,11 +27,7 @@ class Loading extends React.Component {
     return (
       <div className="loading">
         <div className="loading-shadow">
-          <img
-            className="loading-icon"
-            src="http://zhuangtianyu.com/image/1595397636000.png"
-            alt="loading-icon"
-          />
+          {<LoadingIcon />}
         </div>
       </div>
     )

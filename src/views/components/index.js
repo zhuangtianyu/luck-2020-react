@@ -4,6 +4,7 @@ import Input from '../../components/input'
 import Loading from '../../components/loading'
 import Modal from '../../components/modal'
 import Textarea from '../../components/textarea'
+import Toast from '../../components/toast'
 import './index.scss'
 
 class ComponentsView extends React.Component {
@@ -20,17 +21,32 @@ class ComponentsView extends React.Component {
       <>
         <Button
           className="morning-button"
-          onClick={() => alert('clicked')}
+          onClick={() => Toast.show('good morning')}
         >
           morning
         </Button>
 
-        <Button type="primary">
+        <Button
+          type="primary"
+          onClick={() => Toast.show('good afternoon')}
+        >
           afternoon
         </Button>
 
         <Button disabled>
           夜晚
+        </Button>
+
+        <Button loading>
+          loading
+        </Button>
+
+        <Button type="text">
+          text button
+        </Button>
+
+        <Button type="link">
+          link button
         </Button>
       </>
     )
@@ -81,17 +97,63 @@ class ComponentsView extends React.Component {
     })
   }
 
+  renderAsyncModal () {
+    Modal.render({
+      title: '异步弹窗',
+      content: (
+        <div>点击按钮, 触发异步关闭弹窗</div>
+      ),
+      onCancel: () => {
+        const timer = setTimeout(() => {
+          Modal.destory()
+          clearTimeout(timer)
+        }, 1000)
+      },
+      onConfirm: () => {
+        const timer = setTimeout(() => {
+          Modal.destory()
+          clearTimeout(timer)
+        }, 1000)
+      },
+      onClose: () => console.log('on-close'),
+      asyncCancel: true,
+      asyncConfirm: true
+    })
+  }
+
   renderModalEg () {
     return (
-      <Button
-        onClick={() => this.renderModal()}
-      >
-        open modal
-      </Button>
+      <>
+        <Button
+          onClick={() => this.renderModal()}
+        >
+          open modal
+        </Button>
+
+        <Button
+          onClick={() => this.renderAsyncModal()}
+        >
+          open async modal
+        </Button>
+      </>
     )
   }
 
-  renderTextareaEg() {
+  renderToastEg () {
+    return (
+      <>
+        <Button onClick={() => Toast.show('春风秋雨 飘飘落落 只为寂寞')}>
+          伍佰 - last dance
+        </Button>
+
+        <Button onClick={() => Toast.show('我可以很久不和你连络 任日子一天天这么过')}>
+          伍佰 - 被动
+        </Button>
+      </>
+    )
+  }
+
+  renderTextareaEg () {
     const { textareaValue } = this.state
 
     return (
@@ -126,6 +188,10 @@ class ComponentsView extends React.Component {
         <div className="components-title">modal</div>
 
         {this.renderModalEg()}
+
+        <div className="components-title">toast</div>
+
+        {this.renderToastEg()}
 
         <div className="components-title">textarea</div>
 

@@ -1,4 +1,5 @@
 button {
+  position: relative;
   min-width: 80px;
   font-size: 14px;
   line-height: 16px;
@@ -17,11 +18,29 @@ button {
     color: #ffffff;
     background-color: #1890ff;
   }
+
+  &[type="text"] {
+    color: #333;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &[type="link"] {
+    color: #1890ff;
+    background-color: transparent;
+    border-color: transparent;
+  }
   
   &[disabled] {
     color: rgba(0,0,0,0.25);
     border-color: #d9d9d9;
     background-color: #f5f5f5;
     cursor: not-allowed;
+  }
+
+  .loading-icon {
+    width: 18px;
+    height: 18px;
+    margin: -4px 3px -1px 0;
   }
 }
