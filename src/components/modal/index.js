@@ -8,6 +8,14 @@ modalRoot.className = 'modal-root'
 document.querySelector('body').appendChild(modalRoot)
 
 class Modal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cancelLoading: false,
+      confirmLoading: false
+    }
+  }
+
   static render (props) {
     ReactDOM.render(<Modal {...props} />, modalRoot)
   }
@@ -17,15 +25,29 @@ class Modal extends React.Component {
   }
 
   handleCancel () {
-    const { onCancel = () => {} } = this.props
+    const {
+      asyncCancel = false,
+      onCancel = () => {}
+    } = this.props
+
     onCancel()
-    Modal.destory()
+
+    asyncCancel
+      ? this.setState({ cancelLoading: true })
+      : Modal.destory()
   }
 
   handleConfirm () {
-    const { onConfirm = () => {} } = this.props
+    const {
+      asyncConfirm = false,
+      onConfirm = () => {}
+    } = this.props
+
     onConfirm()
-    Modal.destory()
+
+    asyncConfirm
+      ? this.setState({ confirmLoading: true })
+      : Modal.destory()
   }
 
   handleClose () {
@@ -41,6 +63,11 @@ class Modal extends React.Component {
       cancelText = '取消',
       confirmText = '确认'
     } = this.props
+
+    const {
+      cancelLoading,
+      confirmLoading
+    } = this.state
 
     return (
       <div className="modal">
@@ -58,10 +85,17 @@ class Modal extends React.Component {
             </div>
             <div className="modal-body">{content}</div>
             <div className="modal-footer">
-              <Button onClick={() => this.handleCancel()}>
+              <Button
+                loading={cancelLoading}
+                onClick={() => this.handleCancel()}
+              >
                 {cancelText}
               </Button>
-              <Button type="primary" onClick={() => this.handleConfirm()}>
+              <Button
+                type="primary"
+                loading={confirmLoading}
+                onClick={() => this.handleConfirm()}
+              >
                 {confirmText}
               </Button>
             </div>

@@ -32,6 +32,18 @@ class ComponentsView extends React.Component {
         <Button disabled>
           夜晚
         </Button>
+
+        <Button loading>
+          loading
+        </Button>
+
+        <Button type="text">
+          text button
+        </Button>
+
+        <Button type="link">
+          link button
+        </Button>
       </>
     )
   }
@@ -81,13 +93,45 @@ class ComponentsView extends React.Component {
     })
   }
 
+  renderAsyncModal () {
+    Modal.render({
+      title: '异步弹窗',
+      content: (
+        <div>点击按钮, 触发异步关闭弹窗</div>
+      ),
+      onCancel: () => {
+        const timer = setTimeout(() => {
+          Modal.destory()
+          clearTimeout(timer)
+        }, 1000)
+      },
+      onConfirm: () => {
+        const timer = setTimeout(() => {
+          Modal.destory()
+          clearTimeout(timer)
+        }, 1000)
+      },
+      onClose: () => console.log('on-close'),
+      asyncCancel: true,
+      asyncConfirm: true
+    })
+  }
+
   renderModalEg () {
     return (
-      <Button
-        onClick={() => this.renderModal()}
-      >
-        open modal
-      </Button>
+      <>
+        <Button
+          onClick={() => this.renderModal()}
+        >
+          open modal
+        </Button>
+
+        <Button
+          onClick={() => this.renderAsyncModal()}
+        >
+          open async modal
+        </Button>
+      </>
     )
   }
 
