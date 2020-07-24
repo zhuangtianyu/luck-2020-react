@@ -4,6 +4,7 @@ import Input from '../../components/input'
 import Loading from '../../components/loading'
 import Modal from '../../components/modal'
 import Textarea from '../../components/textarea'
+import Toast from '../../components/toast'
 import './index.scss'
 
 class ComponentsView extends React.Component {
@@ -20,12 +21,15 @@ class ComponentsView extends React.Component {
       <>
         <Button
           className="morning-button"
-          onClick={() => alert('clicked')}
+          onClick={() => Toast.show('good morning')}
         >
           morning
         </Button>
 
-        <Button type="primary">
+        <Button
+          type="primary"
+          onClick={() => Toast.show('good afternoon')}
+        >
           afternoon
         </Button>
 
@@ -135,7 +139,21 @@ class ComponentsView extends React.Component {
     )
   }
 
-  renderTextareaEg() {
+  renderToastEg () {
+    return (
+      <>
+        <Button onClick={() => Toast.show('春风秋雨 飘飘落落 只为寂寞')}>
+          伍佰 - last dance
+        </Button>
+
+        <Button onClick={() => Toast.show('我可以很久不和你连络 任日子一天天这么过')}>
+          伍佰 - 被动
+        </Button>
+      </>
+    )
+  }
+
+  renderTextareaEg () {
     const { textareaValue } = this.state
 
     return (
@@ -170,6 +188,10 @@ class ComponentsView extends React.Component {
         <div className="components-title">modal</div>
 
         {this.renderModalEg()}
+
+        <div className="components-title">toast</div>
+
+        {this.renderToastEg()}
 
         <div className="components-title">textarea</div>
 
