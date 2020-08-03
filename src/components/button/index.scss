@@ -38,6 +38,11 @@ button {
     cursor: not-allowed;
   }
 
+  &.loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
   .loading-icon {
     width: 18px;
     height: 18px;

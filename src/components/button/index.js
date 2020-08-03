@@ -12,10 +12,14 @@ const Button = props => {
 
   const handleClick = () => !loading && onClick()
 
-  const opacity = loading ? '0.6' : '1.0'
+  const className = loading ? 'loading' : null
 
   return (
-    <button style={{ opacity }} onClick={handleClick} {...others}>
+    <button
+      className={className}
+      onClick={handleClick}
+      {...others}
+    >
       {loading && <LoadingIcon />}
       {children}
     </button>
