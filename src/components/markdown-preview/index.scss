@@ -1,5 +1,6 @@
 .markdown__preview {
   padding-bottom: 300px;
+
   blockquote {
     padding: 0 1em;
     color: #6a737d;
@@ -8,6 +9,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  ul, p {
+    line-height: 1.8;
     margin-bottom: 16px;
   }
 
@@ -40,7 +46,3 @@
     cursor: pointer;
   }
 }
-
-
-
-

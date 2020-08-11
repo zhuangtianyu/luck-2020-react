@@ -3,17 +3,20 @@
 
   &__base-info {
     margin-bottom: 30px;
+
     &__avatar {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       margin-right: 20px;
     }
+
     &__avatar,
     &__content {
       display: inline-block;
       vertical-align: middle;
     }
+
     &__name {
       margin-bottom: 3px;
     }
@@ -22,8 +25,16 @@
   &__skill {
     margin-bottom: 30px;
   }
+
+  &__skill,
+  &__contact {
+
+    p {
+      margin-bottom: 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
-
-
-
-
