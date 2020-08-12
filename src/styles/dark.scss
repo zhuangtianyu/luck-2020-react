@@ -1,5 +1,6 @@
 $dark-background: #141414;
 $dark-font-color: rgba(255,255,255,0.85);
+$dark-code-background: #262626;
 
 @media (prefers-color-scheme: dark) {
   body {
@@ -28,5 +29,10 @@ $dark-font-color: rgba(255,255,255,0.85);
   .article__item {
     color: $dark-font-color;
     border-bottom-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .markdown__preview code,
+  .markdown__preview pre {
+    background-color: $dark-code-background;
   }
 }
