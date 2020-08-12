@@ -1,0 +1,32 @@
+$dark-background: #141414;
+$dark-font-color: rgba(255,255,255,0.85);
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: $dark-font-color;
+    background-color: $dark-background;
+  }
+
+  .home__nav {
+    background-color: $dark-background;
+    border-bottom-color: transparent;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.65);
+
+    .home__nav__item {
+      color: $dark-font-color;
+  
+      &.active {
+        background-color: #191919;
+      }
+    }
+  }
+
+  .loading-shadow {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .article__item {
+    color: $dark-font-color;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+  }
+}

@@ -19,6 +19,8 @@ function ArticleListView () {
     fetch()
   }, [])
 
+  if (!articleList.length) return null;
+
   return (
     <>
       <div className="article__list">
@@ -46,6 +48,3 @@ function ArticleListView () {
 }
 
 export default ArticleListView
-
-
-

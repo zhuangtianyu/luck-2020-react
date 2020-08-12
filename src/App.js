@@ -4,6 +4,7 @@ import { renderRoutes } from 'react-router-config'
 import routes from './routes'
 import './styles/reset.scss'
 import './styles/index.scss'
+import './styles/dark.scss'
 
 function App () {
   return (
