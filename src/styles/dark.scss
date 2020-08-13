@@ -17,6 +17,7 @@ $dark-code-background: #262626;
       color: $dark-font-color;
   
       &.active {
+        font-weight: 600;
         background-color: #191919;
       }
     }
