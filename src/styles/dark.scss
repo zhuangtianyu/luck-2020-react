@@ -2,7 +2,7 @@ $dark-background: #141414;
 $dark-font-color: rgba(255,255,255,0.85);
 $dark-code-background: #262626;
 
-@media (prefers-color-scheme: dark) {
+html[mode=dark] {
   body {
     color: $dark-font-color;
     background-color: $dark-background;

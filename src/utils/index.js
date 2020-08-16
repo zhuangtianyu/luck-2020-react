@@ -1,4 +1,4 @@
-const timestampToString = (timestamp, format = 'yyyy-MM-dd') => {
+export const timestampToString = (timestamp, format = 'yyyy-MM-dd') => {
   const complete = num => num < 10 ? `0${num}` : num
   const date = new Date(timestamp)
   const yyyy = date.getFullYear()
@@ -16,4 +16,21 @@ const timestampToString = (timestamp, format = 'yyyy-MM-dd') => {
     .replace(/ss/g, ss)
 }
 
-export { timestampToString }
+export const getThemeMode = () => {
+  const previousMode = localStorage.getItem('mode')
+
+  if (previousMode === null) {
+    const darkMode =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    return darkMode ? 'dark' : 'default'
+  }
+
+  return previousMode
+}
+
+export const setThemeMode = mode => {
+  document.querySelector('html').setAttribute('mode', mode)
+  localStorage.setItem('mode', mode)
+}

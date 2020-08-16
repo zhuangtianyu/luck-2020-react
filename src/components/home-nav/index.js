@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { getThemeMode, setThemeMode } from '../../utils'
+import Switch from '../switch'
 import './index.scss'
 
 function HomeNav () {
@@ -8,6 +10,7 @@ function HomeNav () {
     { path: '/home/article', name: '博客' },
     { path: '/home/resume', name: '关于' },
   ]
+
   return (
     <div className="home__nav">
       <div className="home__nav__list container">
@@ -23,13 +26,16 @@ function HomeNav () {
             </NavLink>
           ))
         }
+        <Switch
+          defaultValue={getThemeMode() === 'dark'}
+          onChange={value => {
+            const mode = value ? 'dark' : 'default'
+            setThemeMode(mode)
+          }}
+        />
       </div>
     </div>
   )
 }
 
 export default HomeNav
-
-
-
-
