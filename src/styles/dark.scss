@@ -1,8 +1,10 @@
 $dark-background: #141414;
 $dark-font-color: rgba(255,255,255,0.85);
 $dark-code-background: #262626;
+$transition-duration: 0.4s;
 
 html[mode=dark] {
+
   body {
     color: $dark-font-color;
     background-color: $dark-background;
@@ -13,9 +15,9 @@ html[mode=dark] {
     border-bottom-color: transparent;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.65);
 
-    .home__nav__item {
+    &__item {
       color: $dark-font-color;
-  
+
       &.active {
         font-weight: 600;
         background-color: #191919;
@@ -32,8 +34,25 @@ html[mode=dark] {
     border-bottom-color: rgba(255, 255, 255, 0.3);
   }
 
-  .markdown__preview code,
-  .markdown__preview pre {
-    background-color: $dark-code-background;
+  .markdown__preview {
+
+    code, pre {
+      background-color: $dark-code-background;
+    }
+  }
+}
+
+html[mode=default] {
+
+  body {
+    transition: background-color $transition-duration;
+  
+    .home__nav {
+      transition: $transition-duration;
+      
+      &__item {
+        transition: $transition-duration;
+      }
+    }
   }
 }
