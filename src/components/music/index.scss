@@ -1,0 +1,30 @@
+.music {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  z-index: 10;
+  font-size: 0;
+  padding: 4px 12px 4px 4px;
+  border-radius: 24px 0 0 24px;
+  background-color: rgba($color: #fff, $alpha: 0.1);
+  border: 1px solid rgba($color: #999, $alpha: 0.2);
+  border-right: none;
+
+  .option-item {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+
+    &.next {
+      margin-left: 6px;
+    }
+  }
+
+  audio {
+    position: fixed;
+    top: 100px;
+    right: 0;
+  }
+}
