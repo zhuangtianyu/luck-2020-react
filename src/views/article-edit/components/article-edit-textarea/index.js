@@ -5,7 +5,7 @@ import Button from '../../../../components/button'
 import './index.scss'
 
 function ArticleEditTextarea (props) {
-  const { articleDetail, onChange, onSubmit } = props
+  const { articleDetail, onChange, onSubmit, onDelete } = props
 
   const [markdownString, setMarkdownString] = useState('')
   const [title, setTitle] = useState('')
@@ -22,6 +22,8 @@ function ArticleEditTextarea (props) {
 
     onSubmit({ markdownString, title, author })
   }
+
+  const handleDelete = () => onDelete()
 
   useEffect(() => {
     if (Object.keys(articleDetail).length !== 0) {
@@ -59,6 +61,12 @@ function ArticleEditTextarea (props) {
           value={ author }
           onChange={ e => setAuthor(e.target.value) }
         />
+        <Button
+          type="danger"
+          onClick={ handleDelete }
+        >
+          删除
+        </Button>
       </div>
     </div>
   )

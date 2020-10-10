@@ -19,6 +19,12 @@ button {
     background-color: #1890ff;
   }
 
+  &[type="danger"] {
+    color: #ffffff;
+    border-color: #ff4d4f;
+    background-color: #ff4d4f;
+  }
+
   &[type="text"] {
     color: #333;
     background-color: transparent;

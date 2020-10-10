@@ -3,7 +3,12 @@ import ArticleEditTextarea from './components/article-edit-textarea'
 import MarkdownPreview from '../../components/markdown-preview'
 import Modal from '../../components/modal'
 import Input from '../../components/input'
-import { checkEditPermission, submitArticle, fetchArticleDetail } from '../../service'
+import {
+  checkEditPermission,
+  submitArticle,
+  fetchArticleDetail,
+  deleteArticle
+} from '../../service'
 import './index.scss'
 
 function ArticleEditView (props) {
@@ -15,12 +20,6 @@ function ArticleEditView (props) {
 
   const textareaChange = markdownString => setMarkdownString(markdownString)
 
-  const textareaSubmit = ({ markdownString, title, author }) => {
-    password === undefined
-      ? alert('编辑权限校验--不通过')
-      : submit({ markdownString, title, author, password, id })
-  }
-
   const submit = async (params) => {
     try {
       const { id } = await submitArticle(params)
@@ -29,6 +28,32 @@ function ArticleEditView (props) {
     catch (errorMessage) {
       alert(errorMessage)
     }
+  }
+
+  const handleDelete = async params => {
+    try {
+      await deleteArticle(params)
+      props.history.push('/home')
+    }
+    catch (errorMessage) {
+      alert(errorMessage)
+    }
+  }
+
+  const textareaSubmit = ({ markdownString, title, author }) => {
+    password === undefined
+      ? alert('编辑权限校验--不通过')
+      : submit({ markdownString, title, author, password, id })
+  }
+
+  const textareaDelete = () => {
+    if (!id) return alert('不存在的文档 id')
+
+    Modal.render({
+      title: '删除文档',
+      content: '确认要删除文档？',
+      onConfirm: () => handleDelete({ id, password })
+    })
   }
 
   const permissionCancel = useCallback(() => {
@@ -108,6 +133,7 @@ function ArticleEditView (props) {
           articleDetail={ articleDetail }
           onChange={ textareaChange }
           onSubmit={ textareaSubmit }
+          onDelete={ textareaDelete }
         />
         <MarkdownPreview
           markdownString={ markdownString }

@@ -6,6 +6,12 @@ const fetchArticleDetail = id => axios.get(`/article/detail/${id}`)
 const checkEditPermission = params => axios.post('/article/edit/permission', params)
 const submitArticle = params => axios.post('/article/edit/submit', params)
 
-export { fetchArticleList, fetchArticleDetail, checkEditPermission, submitArticle }
+const deleteArticle = params => axios.delete('/article/delete', { data: params })
 
-
+export {
+  fetchArticleList,
+  fetchArticleDetail,
+  checkEditPermission,
+  submitArticle,
+  deleteArticle
+}
