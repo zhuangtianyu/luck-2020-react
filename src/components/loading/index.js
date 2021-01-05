@@ -9,7 +9,7 @@ document.querySelector('body').appendChild(loadingRoot)
 export const LoadingIcon = () => (
   <img
     className="loading-icon"
-    src="http://zhuangtianyu.com/image/1595397636000.png"
+    src="https://zhuangtianyu.com/image/1595397636000.png"
     alt="loading-icon"
   />
 )

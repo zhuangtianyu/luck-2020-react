@@ -78,7 +78,7 @@ class Modal extends React.Component {
               <div className="modal-close" onClick={() => this.handleClose()}>
                 <img
                   className="modal-close-icon"
-                  src="http://zhuangtianyu.com/image/1595404023939.png"
+                  src="https://zhuangtianyu.com/image/1595404023939.png"
                   alt="modal-close-icon"
                 />
               </div>

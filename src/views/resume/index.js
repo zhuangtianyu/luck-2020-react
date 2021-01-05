@@ -7,7 +7,7 @@ function Resume () {
       <div className="resume__view__base-info">
         <img
           className="resume__view__base-info__avatar"
-          src="http://zhuangtianyu.com/image/1580058226968.jpeg"
+          src="https://zhuangtianyu.com/image/1580058226968.jpeg"
           alt="avatar-cola"
         />
         <div className="resume__view__base-info__content">
