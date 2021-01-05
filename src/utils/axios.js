@@ -1,10 +1,12 @@
 import axios from 'axios'
 import Loading from '../components/loading'
 
+const { protocol } = window.location
+
 const instance = axios.create({
   baseURL: process.env.NODE_ENV === 'development'
-    ? 'http://localhost:1995/luck'
-    : 'http://www.zhuangtianyu.com:1995/luck',
+    ? 'http://localhost:1995'
+    : `${protocol}//www.zhuangtianyu.com`,
   timeout: 60000
 })
 
